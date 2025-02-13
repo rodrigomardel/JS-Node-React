@@ -1,9 +1,10 @@
-import { obtenerDatos, mostrarDatos } from "./modules/datos.js";
+import { obtenerDatos } from "./modules/datos.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("buscar").addEventListener("click", (e) => {
-    let datos = obtenerDatos();
-    console.log(datos);
-    mostrarDatos(datos);
+    const fechaSeleccionada = document.getElementById("fecha").value;
+    console.log(fechaSeleccionada);
+
+    obtenerDatos(fechaSeleccionada);
   });
 });

@@ -1,6 +1,6 @@
-function obtenerDatos() {
+/**Obtiene los datos de una fecha concreta haciendo una llamada a la api de la NASA */
+function obtenerDatos(fechaSeleccionada) {
   const NASA_API_KEY = "DEMO_KEY";
-  const fechaSeleccionada = document.getElementById("fecha").value;
 
   if (!fechaSeleccionada) {
     alert("Por favor, selecciona una fecha.");
@@ -11,12 +11,11 @@ function obtenerDatos() {
 
   fetch(url)
     .then((response) => response.json())
-    .then((data) => {
-      return data;
-    })
+    .then((data) => mostrarDatos(data))
     .catch((error) => console.error("Error al obtener los datos:", error));
 }
 
+/**Muestra los datos obtenidos anteriormente */
 function mostrarDatos(data) {
   document.getElementById("titulo").textContent = data.title;
   document.getElementById("fecha-mostrada").textContent = data.date;
@@ -32,4 +31,4 @@ function mostrarDatos(data) {
   }
 }
 
-export { obtenerDatos, mostrarDatos };
+export { obtenerDatos };
