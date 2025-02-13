@@ -1,5 +1,5 @@
 function obtenerDatos() {
-  const NASA_API_KEY = "DEMO_KEY"; // Reemplázalo con tu API Key si tienes una
+  const NASA_API_KEY = "DEMO_KEY";
   const fechaSeleccionada = document.getElementById("fecha").value;
 
   if (!fechaSeleccionada) {
@@ -11,7 +11,9 @@ function obtenerDatos() {
 
   fetch(url)
     .then((response) => response.json())
-    .then((data) => mostrarDatos(data))
+    .then((data) => {
+      return data;
+    })
     .catch((error) => console.error("Error al obtener los datos:", error));
 }
 
