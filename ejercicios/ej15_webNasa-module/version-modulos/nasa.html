@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NASA APOD</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container text-center">
+      <h1 class="mt-4">Astronomy Picture of the Day</h1>
+      <label for="fecha" class="form-label mt-3">Selecciona una fecha:</label>
+      <input type="date" id="fecha" class="form-control w-25 mx-auto" />
+      <button id="buscar" class="btn btn-primary mt-2">Buscar</button>
+
+      <h3 id="titulo" class="pt-5"></h3>
+      <p id="fecha-mostrada" class="text-center"></p>
+      <p id="descripcion" class="lead"></p>
+      <div id="c_multimedia" class="text-center mt-3"></div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
