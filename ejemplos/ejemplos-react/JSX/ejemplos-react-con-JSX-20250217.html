@@ -1,0 +1,27 @@
+<!-- https://peterkellner.net/2024/05/10/running-react-19-from-a-cdn-and-using-esm.sh/-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple React App No JSX React 19</title>
+    <script type="module">
+      import React from "https://esm.sh/react@19.0.0-beta-04b058868c-20240508/?dev";
+      import ReactDOMClient from "https://esm.sh/react-dom@19.0.0-beta-04b058868c-20240508/client/?dev";
+
+      window.onload = () => {
+        const contenido = "Soy Rodrigo";
+        function saluda() {
+          return "Hola Mundo";
+        }
+        <input disabled id="a" class="Hola">
+          {" "}
+          {saluda() + contenido}
+        </input>;
+      };
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
