@@ -1,5 +1,10 @@
 // Importamos el módulo 'fs' para manejar archivos
-const fs = require("fs");
+// existsSync(path): Verifica si un archivo o directorio existe
+// readFileSync(path, options): Lee el contenido de un archivo
+// writeFileSync(path, data, options): Escribe datos en un archivo
+import { existsSync, readFileSync, writeFileSync } from "fs";
+// biblioteca que permite usar colores y estilos de fuentes
+import chalk from "chalk";
 
 // Nombre del archivo donde se guardará el contador
 const archivo = "contador.txt";
@@ -9,10 +14,10 @@ const archivo = "contador.txt";
  * Si el archivo no existe, devuelve 0.
  */
 function obtenerContador() {
-  if (!fs.existsSync(archivo)) {
+  if (!existsSync(archivo)) {
     return 0; // Si el archivo no existe, el contador comienza en 0
   }
-  return parseInt(fs.readFileSync(archivo, "utf-8")) || 0;
+  return parseInt(readFileSync(archivo, "utf-8")) || 0;
 }
 
 /**
@@ -20,7 +25,7 @@ function obtenerContador() {
  * @param {number} valor - Nuevo valor del contador.
  */
 function guardarContador(valor) {
-  fs.writeFileSync(archivo, valor.toString(), "utf-8");
+  writeFileSync(archivo, valor.toString(), "utf-8");
 }
 
 /**
@@ -30,7 +35,7 @@ function aumentar() {
   let valor = obtenerContador(); // Obtener el valor actual
   valor++; // Incrementar en 1
   guardarContador(valor); // Guardar el nuevo valor en el archivo
-  console.log(`🔼 Contador aumentado: ${valor}`);
+  console.log(chalk.blueBright(`🔼 Contador aumentado: ${valor}`));
 }
 
 /**
@@ -40,17 +45,19 @@ function disminuir() {
   let valor = obtenerContador(); // Obtener el valor actual
   valor--; // Disminuir en 1
   guardarContador(valor); // Guardar el nuevo valor en el archivo
-  console.log(`🔽 Contador disminuido: ${valor}`);
+  console.log(chalk.yellowBright(`🔽 Contador disminuido: ${valor}`));
 }
 
 /**
  * Función para mostrar el valor actual del contador.
  */
 function mostrar() {
-  console.log(`📊 Valor actual del contador: ${obtenerContador()}`);
+  console.log(
+    chalk.greenBright(`📊 Valor actual del contador: ${obtenerContador()}`)
+  );
 }
 
-// Capturamos el comando ingresado en la terminal
+// Capturamos el tercer argumento pasado en la línea de comandos.
 const comando = process.argv[2];
 
 // Evaluamos el comando y llamamos a la función correspondiente
@@ -65,5 +72,12 @@ switch (comando) {
     mostrar();
     break;
   default:
-    console.log("❓ Comandos disponibles: aumentar, disminuir, mostrar");
+    console.log(
+      chalk.redBright("❓ Comandos disponibles: aumentar, disminuir, mostrar")
+    );
 }
+
+// Ejemplo de funcionamiento
+// node contador.js aumentar
+// node contador.js disminuir
+// node contador.js mostrar
