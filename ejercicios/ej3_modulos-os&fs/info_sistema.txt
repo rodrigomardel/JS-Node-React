@@ -1,0 +1,7 @@
+Nombre del sistema operativo: win32
+Versión del sistema operativo: 10.0.19042
+Arquitectura: x64
+CPUs: 8
+Memoria libre (MB): 1027.64
+Memoria total (MB): 8072.98
+Uptime (horas): 11.57
