@@ -1,0 +1,40 @@
+<!-- https://peterkellner.net/2024/05/10/running-react-19-from-a-cdn-and-using-esm.sh/-->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple React App JSX React 19</title>
+    <script
+      src="https://unpkg.com/@babel/standalone/babel.min.js"
+      type="text/babel"
+    >
+      import React from "https://esm.sh/react@19.0.0-beta-04b058868c-20240508/?dev";
+      import ReactDOMClient from "https://esm.sh/react-dom@19.0.0-beta-04b058868c-20240508/client/?dev";
+
+      window.onload = () => {
+        const rootElement = ReactDOMClient.createRoot(
+          document.getElementById("root")
+        );
+
+        const App = () => {
+          const botones = ["Button1", "Button2", "Button3"];
+          return (
+            <>
+              {botones.map((boton) => (
+                <button key={boton} data-id="123">
+                  {boton}
+                </button>
+              ))}
+            </>
+          );
+        };
+
+        rootElement.render(<App />);
+      };
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
